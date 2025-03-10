@@ -11,3 +11,8 @@ span {
   font-size: 25px;
   font-weight: bold;
 }
+ul{
+  display: flex;
+  gap: 60px;
+
+}

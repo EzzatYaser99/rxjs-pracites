@@ -42,20 +42,81 @@
 <h3><span>distinctUntilChanged(): </span>Emits a value only if it is different from the previous value.</h3>
 <h3><span>debounceTime(): </span>Emits a value from the source observable only after a specified duration has passed
   without any
-  other
-  <h3>value being emitted.</h3>
-  <h2> 4 - Transformation Operators: </h2>
-  <h3><span>map():</span> Transforms each value emitted by an observable into a new value.</h3>
-  <h3><span>pluck(): </span>Extracts the value of a specified property from each emitted object.</h3>
-  <h3><span>scan(): </span>Applies an accumulator function to each value emitted by an observable and emits each
-    intermediate result.
+  other value being emitted.</h3>
+<h2> 4 - Transformation Operators: </h2>
+<h3><span>map():</span> Transforms each value emitted by an observable into a new value.</h3>
+<h3><span>pluck(): </span>Extracts the value of a specified property from each emitted object.</h3>
+<h3><span>scan(): </span>Applies an accumulator function to each value emitted by an observable and emits each
+  intermediate result.
+</h3>
+<h2> 5 - Error Handling Operators: </h2>
+<h3><span>catchError(): </span>Handles errors emitted by the source observable and returns a new observable or throws
+  an error.
+</h3>
+<h3><span>retry(): </span>Resubscribes to the source observable a specified number of times if an error occurs.</h3>
+<h2> 6 - Utility Operators: </h2>
+<h3><span>tap(): </span>Performs side effects for each emission on the source observable without modifying the emitted
+  values.</h3>
+<h3><span>delay(): </span>Delays the emissions from the source observable by a specified duration.</h3>
+
+
+<div>
+  <h2>example Map </h2>
+  <h3>Output Data using map operator * 2 </h3>
+  <h3>
+    const observable = of(1, 2, 3, 4, 5);
   </h3>
-  <h2> 5 - Error Handling Operators: </h2>
-  <h3><span>catchError(): </span>Handles errors emitted by the source observable and returns a new observable or throws
-    an error.
+  <ul>
+    <li *ngFor="let data of outputMappedData">{{ data }}</li>
+  </ul>
+</div>
+
+<div>
+  <h2>example filter </h2>
+  <h3>Output Data which greater than 7 </h3>
+  <h3>
+    const observableTwo = of(1, 2, 3, 4, 5, 11, 13, 17, 19, 0, 5, 7);
   </h3>
-  <h3><span>retry(): </span>Resubscribes to the source observable a specified number of times if an error occurs.</h3>
-  <h2> 6 - Utility Operators: </h2>
-  <h3><span>tap(): </span>Performs side effects for each emission on the source observable without modifying the emitted
-    values.</h3>
-  <h3><span>delay(): </span>Delays the emissions from the source observable by a specified duration.</h3>
+  <ul>
+    <li *ngFor="let data of outputFilteredData">{{ data }}</li>
+  </ul>
+</div>
+
+<div>
+  <h2>example distinctUntilChanged </h2>
+  <h3>filter out consecutive duplicate values from an observable stream.</h3>
+  <h3>
+    const observable three = of( 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4);
+  </h3>
+  <ul>
+    <li *ngFor="let data of outputDistinctUntilChanged">{{ data }}</li>
+  </ul>
+</div>
+
+<div>
+  <h2>example mergeMap (flatMap) </h2>
+  <h3> Output Data using the mergeMap operator print Squaring the number </h3>
+  <h3>
+    const observableFour= of(1, 2, 3, 4, 5);
+  </h3>
+  <ul>
+    <li *ngFor="let data of outputMergeMapData  | async ">{{ data }}</li>
+  </ul>
+</div>
+
+
+<div>
+  <h2>combineLatest Example</h2>
+  <h3>
+    const observable1 = of(1, 2, 3, 4);
+    <br>
+    const observable2 = of('A', 'B', 'C', 'D');
+    <br>
+    Latest values from observables
+  </h3>
+  <ul>
+    <li *ngFor="let pair of outputCombinedValues">
+      {{ pair[0] }} - {{ pair[1] }}
+    </li>
+  </ul>
+</div>
